@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Events | CCC</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../../css/styles.css">
+
+  <!-- Icon -->
+  <link rel="icon" href="../../images/favicon.ico">
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital,wght@0,400;0,500;0,700;0,800;0,900;1,400;1,500;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Overlay -->
+  <div class="overlay hidden" id="overlay"></div>
+
+  <section>
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <img class="navbar-brand-logo" src="../../images/logo.png" alt="Web application logo">
+        <h1 class="navbar-brand-text">Catholic Church Complex</h1>
+      </div>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../../index.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Events</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../activities/index.html">Activities</a>
+        </li>
+      </ul>
+
+      <address class="bottom-navbar-container">
+        <div class="address">
+          <p>For inquiries contact:</p>
+          <strong class="contact">0909090909</strong>
+          <strong class="contact">email@gmail.com</strong>
+        </div>
+      </address>
+    </nav>
+  </section>
+
+  <main class="content content-flex">
+    <header class="section-header">
+      <h2 class="section-heading">Events</h2>
+      <button class="btn btn-schedule expand" type="button" name="button" onclick="togglePopup('scheduleEvent')">
+        <i class="fa-solid fa-plus icon"></i>
+        Schedule Event
+      </button>
+    </header>
+
+    <div class="side-to-side">
+      <div class="event-overview">
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Wedding</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Baptismal</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Youth Activities</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Anniversary</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Practice</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Other Events</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+
+        <hr class="event-divider">
+
+        <span class="event-overview-box">
+          <h4 class="secondary-texts">Prayer Meeting</h4>
+          <p class="event-counter"><strong>###</strong></p>
+        </span>
+      </div>
+
+      <form class="search-field" method="post">
+        <input class="input search" type="search" name="" value="" placeholder="Search here...">
+        <button class="btn btn-search" type="button" name="search-btn"><i class="fa-solid fa-magnifying-glass icon"></i></button>
+      </form>
+    </div>
+
+    <form class="table-container" method="post" id="eventsTable">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th>Event</th>
+            <th>Client</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody class="table-body" id="tableData">
+          <!-- Sample Data -->
+          <tr id="event1" class="unclickable">
+            <td>Marriage</td>
+            <td>Mr. and Mrs. Wed</td>
+            <td class="date">MMMM dd, YYYY</td>
+            <td><button class="btn btn-certificate" type="button" name="button" onclick="requestCertificate('requestCertificate', event)">Certificate</button></td>
+          </tr>
+
+          <tr id="event2" class="unclickable">
+            <td>Baptismal</td>
+            <td>Baby Baptism</td>
+            <td class="date">MMMM dd, YYYY</td>
+            <td><button class="btn btn-certificate" type="button" name="button" onclick="requestCertificate('requestCertificate', event)">Certificate</button></td>
+          </tr>
+
+          <tr id="event3" onclick="getData('anniversary', 123123)">
+            <td>Anniversary</td>
+            <td>1st Anniversary Anniversary</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+
+          <tr id="event4" onclick="getData('youthActivity', 123123)">
+            <td>Youth Activity</td>
+            <td>Mr. and Mrs. Wed</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+
+
+          <tr id="event5" onclick="getData('prayerMeeting', 123123)">
+            <td>Prayer Meeting</td>
+            <td>Mr. and Mrs. Wed</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+
+          <tr id="event6" onclick="getData('practice', 123123)">
+            <td>Practice</td>
+            <td>Baby Baptism</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+
+          <tr id="event7" onclick="getData('anniversary', 123123)" class="done">
+            <td>Anniversary</td>
+            <td>1st Anniversary Anniversary</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+
+          <tr id="event8" class="done unclickable">
+            <td>Wedding</td>
+            <td>Mr. and Mrs. Wed</td>
+            <td>MMMM dd, YYYY</td>
+            <td><button class="btn btn-certificate disabled" type="button" name="button" disabled>Certificate</button></td>
+          </tr>
+
+          <tr id="event9" onclick="getData('other', 123123)" class="done">
+            <td>Other</td>
+            <td>Other Event</td>
+            <td>MMMM dd, YYYY</td>
+            <td><span class="no-action"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+    <div class="table-select-action-buttons hidden" id="tableSelectOptions">
+      <div class="container">
+        <div class="row-flex">
+          <button class="btn btn-submit" onclick="togglePopup('deleteRow')">
+            <i class="fa-solid fa-trash-can icon"></i>
+            Delete
+          </button>
+          <button class="btn btn-neutral" onclick="selectAllCheckbox('selectAll', true);">
+            <i class="fa-solid fa-xmark icon"></i>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Overlay -->
+  <div class="overlay hidden" id="overlay"></div>
+
+  <!-- Schedule Event -->
+  <section class="container-center hidden" id="scheduleEvent">
+    <div class="popup">
+      <div class="popup-header">
+        <h2 class="popup-heading">Schedule an Event</h2>
+        <i class="fa-solid fa-xmark popup-btn-close" onclick="togglePopup('scheduleEvent')"></i>
+      </div>
+
+      <hr>
+
+      <div class="popup-body">
+        <label for="events">Type of Event</label>
+        <div class="select-wrapper">
+          <select class="input select" name="eventChoice" id="events">
+            <option value="none">Select an event</option>
+            <option value="baptismal">Baptismal</option>
+            <option value="marriage">Marriage</option>
+          </select>
+        </div>
+
+        <div class="row">
+          <span class="">
+            <label for="">Date</label>
+            <input class="input" type="date" name="" value="">
+          </span>
+
+          <span class="">
+            <label for="">Time</label>
+            <input class="input" type="time" name="" value="">
+          </span>
+        </div>
+
+        <div class="popup-action-btns">
+          <input class="btn btn-submit" type="button" value="Next" onclick="scheduleEvent('events')">
+          <p class="btn-secondary" onclick="togglePopup('scheduleEvent')">Cancel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request -->
+  <section class="container-center hidden" id="requestCertificate">
+    <div class="popup">
+      <div class="popup-header">
+        <h2 class="popup-heading">Request</h2>
+        <i class="fa-solid fa-xmark popup-btn-close" onclick="togglePopup('requestCertificate')"></i>
+      </div>
+
+      <hr>
+
+      <div class="popup-body">
+        <p class="popup-description">Input your Name and Contact Number</p>
+        <form method="post">
+          <input class="input" type="text" placeholder="Name" required>
+          <input class="input" type="text" placeholder="Contact" required>
+
+          <p class="popup-description">Upload the permanent QR Code given upon scheduling.</p>
+
+          <input type="file" value="">
+
+          <input class="btn btn-neutral" type="button" value="Verify" onclick="togglePopup('requestCertificate'); togglePopup('resultCode')">
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Result -->
+  <section class="container-center hidden" id="resultCode">
+    <div class="popup">
+      <div class="popup-header">
+        <h2 class="popup-heading">Results</h2>
+        <i class="fa-solid fa-xmark popup-btn-close" onclick="togglePopup('resultCode')"></i>
+      </div>
+
+      <hr>
+
+      <div class="popup-body">
+        <p class="popup-description">A Request From</p>
+        <form method="post">
+          <input class="input" type="text" name="" value="Name" disabled>
+          <input class="input" type="text" name="" value="Contact" disabled>
+
+          <h1 class="resultText">Result Text</h1>
+          <!-- <h1 class="resultText">Request Granted</h1> -->
+          <!-- <h1 class="resultText">Request Failed <br> Try Again</h1> -->
+
+          <input class="btn btn-neutral" type="button" value="OK" onclick="togglePopup('resultCode')">
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/4de3040dc0.js" crossorigin="anonymous"></script>
+
+  <!-- Functionality -->
+  <script type="text/javascript" src="../../js/index.js"></script>
+</body>
+
+</html>
